@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pyrrhia — 1:1 Scale 3D Map</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="viewport"></canvas>
+
+      <aside id="hud">
+        <header>
+          <h1>Pyrrhia</h1>
+          <p class="subtitle">1:1 scale · Wings of Fire</p>
+        </header>
+
+        <section id="view-modes">
+          <div class="btn-row">
+            <button type="button" id="mode-orbit" class="mode-btn active">Orbit</button>
+            <button type="button" id="mode-fly" class="mode-btn">Fly</button>
+          </div>
+          <button type="button" id="btn-overview" class="wide-btn">Frame whole continent</button>
+        </section>
+
+        <section id="relief">
+          <h2>Vertical exaggeration</h2>
+          <div class="slider-row">
+            <input type="range" id="vert-scale" min="1" max="40" step="1" value="15" />
+            <output id="vert-scale-out">15×</output>
+          </div>
+          <p class="hint">Horizontal distance is always true 1:1. At 1× the relief is
+            geometrically correct but visually flat, exactly like real Earth.</p>
+        </section>
+
+        <section id="minimap-wrap">
+          <h2>Map</h2>
+          <p class="hint">Click to teleport</p>
+          <canvas id="minimap" width="280" height="220"></canvas>
+        </section>
+
+        <section id="landmarks">
+          <h2>Places — <span id="landmark-count">0</span></h2>
+          <div id="group-filters" class="chip-row"></div>
+          <input
+            type="search"
+            id="landmark-search"
+            placeholder="Search places…"
+            autocomplete="off"
+          />
+          <div id="landmark-list"></div>
+        </section>
+
+        <section id="status">
+          <div><span>Position</span><strong id="pos">—</strong></div>
+          <div><span>Altitude</span><strong id="alt">—</strong></div>
+          <div><span>Ground</span><strong id="ground">—</strong></div>
+          <div><span>Kingdom</span><strong id="kingdom">—</strong></div>
+          <div><span>Speed</span><strong id="spd">—</strong></div>
+          <div><span>Patches</span><strong id="patches">—</strong></div>
+        </section>
+
+        <section id="export">
+          <h2>3D model</h2>
+          <button type="button" id="btn-export" class="wide-btn">Export .glb mesh</button>
+          <p class="hint" id="export-hint">512² grid, ~0.5 M triangles, vertex-coloured.
+            Opens in Blender, Unreal, Godot.</p>
+        </section>
+
+        <section id="help">
+          <h2>Controls</h2>
+          <ul>
+            <li><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move <span class="hint">both modes</span></li>
+            <li><kbd>Q</kbd><kbd>E</kbd> down / up</li>
+            <li><kbd>Shift</kbd> boost <span class="hint">×6 speed</span></li>
+            <li>Mouse drag <span class="hint">orbit, or look in Fly</span></li>
+            <li>Scroll change speed / zoom</li>
+            <li><kbd>R</kbd> reset view</li>
+          </ul>
+        </section>
+      </aside>
+
+      <div id="loading">
+        <div class="loading-inner">
+          <h2>Building Pyrrhia</h2>
+          <div class="bar"><div class="bar-fill" id="load-bar"></div></div>
+          <p id="load-label">Summoning the dragonets…</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
