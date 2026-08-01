@@ -1,0 +1,26 @@
+{
+  "name": "pyrrhia-3d-map",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "shot": "node scripts/shot.mjs",
+    "export-glb": "node scripts/export-glb.mjs"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.170.0",
+    "puppeteer": "^25.4.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "puppeteer@25.4.0": true
+  }
+}
